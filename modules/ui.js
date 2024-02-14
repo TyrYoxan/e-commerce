@@ -1,4 +1,6 @@
 import Cart from "./Cart.js";
+import {addListener} from "./App.js";
+
 const cart = new Cart();
 function displayProduct (product){
     const imgSrc = `/images/${product.ref}.png`;
@@ -23,11 +25,7 @@ function displayProduct (product){
 `;
 
     const addToCartBtn = newProduct.querySelector('.product-add2cart');
-    addToCartBtn.addEventListener('click', () => {
-        cart.addToCart(product);
-        displayCart();
-        generatCalc();
-    });
+    addListener(addToCartBtn, product);
 
     let insert = document.getElementById('product-list');
     insert.appendChild(newProduct);
@@ -41,7 +39,6 @@ function buildProductsList(products) {
 }
 
 function displayCart() {
-    console.log(cart.items);
     const currentCart = cart.items;
 
     const cartContainer = document.getElementById('cart-content');
@@ -84,4 +81,4 @@ function fileExists(url) {
     return http.status !== 404;
 }
 
-export { buildProductsList, displayCart };
+export { buildProductsList, displayCart,generatCalc, cart } ;

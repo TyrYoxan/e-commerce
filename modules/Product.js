@@ -18,7 +18,6 @@ function search(keyword){
         return product.ref.toLowerCase().includes(keyword.toLowerCase()) ||
             product.description.toLowerCase().includes(keyword.toLowerCase());
     });
-    console.log(matchingProducts);
 
     return matchingProducts;
 }

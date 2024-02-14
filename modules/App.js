@@ -1,5 +1,5 @@
 import products from "./Product.js";
-import {buildProductsList, displayCart} from './ui.js';
+import {buildProductsList, displayCart,generatCalc, cart} from './ui.js';
 import {search} from "./Product.js";
 import Cart from "./Cart.js";
 
@@ -27,4 +27,11 @@ function init() {
 
 }
 
-export { init };
+function addListener(element, product){
+    element.addEventListener('click', () => {
+        cart.addToCart(product);
+        displayCart();
+        generatCalc();
+    });
+}
+export { init, addListener };
